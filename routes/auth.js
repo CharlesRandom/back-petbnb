@@ -23,7 +23,7 @@ router.post('/login', (req, res, next) => {
     if(err) return res.status(500).json(info)
     if(!user) return res.status(404).json(info)
     req.login(user,(err)=>{
-      return res.status(201).json(user)
+      return res.status(200).json(user)
     })
   })(req, res, next)
 })
