@@ -77,9 +77,13 @@ app.locals.title = 'Petbnb';
 const index = require('./routes/index');
 const auth = require('./routes/auth');
 const pets = require('./routes/pets');
+const addresses = require('./routes/addresses');
+const banks = require('./routes/banks');
 app.use('/', index);
 app.use('/auth', auth);
 app.use('/pets', pets);
+app.use('/addresses', addresses);
+app.use('/banks', banks);
 
 
 module.exports = app;

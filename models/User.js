@@ -13,7 +13,26 @@ const userSchema = new Schema({
       type:Schema.Types.ObjectId,
       ref:'Pet'
     }
-  ]
+  ],
+  host:Boolean,
+  phone:Number,
+  address:{
+    type:Schema.Types.ObjectId,
+    ref:'Address'
+  },
+  photoURL:String,
+  cover:String,
+  price:Number,
+  homeType:{
+    type:String,
+    enum:["House","Apt","Other"]
+  },
+  bank:{
+    type:Schema.Types.ObjectId,
+    ref:'Bank'
+  },
+  title:String,
+  description:String,
 },{
   timestamps:{
     createdAt:true,
