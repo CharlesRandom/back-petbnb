@@ -79,11 +79,13 @@ const auth = require('./routes/auth');
 const pets = require('./routes/pets');
 const addresses = require('./routes/addresses');
 const banks = require('./routes/banks');
+const hosts = require('./routes/hosts');
 app.use('/', index);
 app.use('/auth', auth);
 app.use('/pets', pets);
 app.use('/addresses', addresses);
 app.use('/banks', banks);
+app.use('/hosts', hosts);
 
 
 module.exports = app;
