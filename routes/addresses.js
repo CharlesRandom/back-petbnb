@@ -7,7 +7,7 @@ router.post('/new', (req, res, next) => {
   const { user } = req.body
   Address.create(req.body)
   .then(address => {
-    User.findByIdAndUpdate(user, {$set:{address: address._id, host:true}}, { 'new': true})
+    User.findByIdAndUpdate(user, {$set:{address: address._id}}, { 'new': true})
     .then(user => {
       res.status(201).json(user)
     })

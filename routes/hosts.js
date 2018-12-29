@@ -10,6 +10,14 @@ router.get('/all', (req, res, next)=>{
   .catch(e => res.json(e))
 })
 
-
+//Add host data
+router.put('/new', (req, res, next) => {
+  const { user } = req.body
+  User.findByIdAndUpdate(user, req.body, { 'new': true})
+    .then(user => {
+      res.status(201).json(user)
+    })
+    .catch(e => res.status(500).json(e))
+})
 
 module.exports = router
