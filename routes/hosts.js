@@ -3,7 +3,7 @@ const User = require('../models/User')
 
 //Get hosts data
 router.get('/all', (req, res, next)=>{
-  User.find({host:true})
+  User.find({host:true}).populate('address')
   .then(response => {
     return res.status(200).json(response)
   })

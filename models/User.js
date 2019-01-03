@@ -23,6 +23,7 @@ const userSchema = new Schema({
   photoURL:String,
   cover:String,
   price:Number,
+  rate:Number,
   homeType:{
     type:String,
     enum:["House","Apt","Other"]

@@ -80,12 +80,14 @@ const pets = require('./routes/pets');
 const addresses = require('./routes/addresses');
 const banks = require('./routes/banks');
 const hosts = require('./routes/hosts');
+const reservations = require('./routes/reservations');
 app.use('/', index);
 app.use('/auth', auth);
 app.use('/pets', pets);
 app.use('/addresses', addresses);
 app.use('/banks', banks);
 app.use('/hosts', hosts);
+app.use('/reservations', reservations);
 
 
 module.exports = app;
