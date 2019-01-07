@@ -15,7 +15,7 @@ const MongoStore = require('connect-mongo')(session)
 
 
 mongoose
-  .connect('mongodb://localhost/back-petbnb', {useNewUrlParser: true})
+  .connect(process.env.DB, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -44,7 +44,7 @@ app.use(session({
     mongooseConnection:mongoose.connection,
     ttl:24*60*60
   }),
-  secret:'carlinho',
+  secret:process.env.SECRET,
   resave:true,
   saveUninitialized:true,
   cookie:{httpOnly:true,maxAge:60000}
