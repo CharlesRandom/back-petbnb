@@ -26,10 +26,9 @@ router.post('/new', isAuth, (req, res, next) => {
 //Get pets data
 router.get('/all', isAuth, (req, res, next)=>{
   const owner = req.user._id
-  console.log(owner)
   User.findById(owner).populate('pets')
-  .then(response => {
-    return res.status(200).json(response)
+  .then(user => {
+    return res.status(200).json(user)
   })
   .catch(e => res.json(e))
 })
