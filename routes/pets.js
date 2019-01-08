@@ -9,11 +9,11 @@ const isAuth = (req, res, next) => {
 }
 
 //Add pet
-router.post('/new', isAuth, (req, res, next) => {
+router.post('/new', (req, res, next) => {
   const { owner } = req.body
   Pet.create(req.body)
   .then(pet => {
-    User.findByIdAndUpdate(owner, {$push:{pets: pet._id}}, { 'new': true})
+    User.findByIdAndUpdate(owner, {$push:{pets: pet._id}}, { 'new': true}).populate('pets')
     .then(user => {
       res.status(201).json(user)
     })
@@ -24,7 +24,7 @@ router.post('/new', isAuth, (req, res, next) => {
 })
 
 //Get pets data
-router.get('/all', isAuth, (req, res, next)=>{
+router.get('/all', (req, res, next)=>{
   const owner = req.user._id
   User.findById(owner).populate('pets')
   .then(user => {
