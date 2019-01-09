@@ -35,8 +35,13 @@ router.get('/logout', (req, res, next)=>{
 })
 
 //profile
-router.get('/profile', isAuth, (req, res, next)=>{
-  return res.status(200).json(req.user)
+router.get('/profile/:id', isAuth, (req, res, next)=>{
+  const {id} = req.params
+  User.findById(id).populate('pets')
+  .then(user => {
+    return res.status(200).json(user)
+  })
+  .catch(e => res.json(e))
 })
 
 module.exports = router
