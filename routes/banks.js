@@ -7,7 +7,7 @@ router.post('/new', (req, res, next) => {
   const { user } = req.body
   Bank.create(req.body)
   .then(bank => {
-    User.findByIdAndUpdate(user, {$set:{bank: bank._id, host:true}}, { 'new': true})
+    User.findByIdAndUpdate(user, {$set:{bank: bank._id, host:true}}, { 'new': true}).populate('pets')
     .then(user => {
       res.status(201).json(user)
     })

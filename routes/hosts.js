@@ -13,7 +13,7 @@ router.get('/all', (req, res, next)=>{
 //Add host data
 router.put('/new', (req, res, next) => {
   const { user } = req.body
-  User.findByIdAndUpdate(user, req.body, { 'new': true})
+  User.findByIdAndUpdate(user, req.body, { 'new': true}).populate('pets')
     .then(user => {
       res.status(201).json(user)
     })
