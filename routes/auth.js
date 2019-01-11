@@ -37,7 +37,7 @@ router.get('/logout', (req, res, next)=>{
 //profile
 router.get('/profile/:id', isAuth, (req, res, next)=>{
   const {id} = req.params
-  User.findById(id).populate('pets')
+  User.findById(id).populate('pets').populate('address')
   .then(user => {
     return res.status(200).json(user)
   })
